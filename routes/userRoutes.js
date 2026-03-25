@@ -17,5 +17,5 @@ router.use((req, res, next) =>{
     next();
 });
 
-
+//commonjs syntax to export the router (configured in package.json "type": "commonjs")
 module.exports = router;
