@@ -1,29 +1,40 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const port = process.env.PORT || 8000;
-const ejs = require('ejs');
+const ejs = require("ejs");
+const mongoose = require("mongoose");
+const uri = process.env.MONGO_URI;
 
-const userRoutes = require('./routes/userRoutes');
+const userRoutes = require("./routes/userRoutes");
 
 //view engine
-app.set('view engine', 'ejs');
-app.set( 'views', './views');
+app.set("view engine", "ejs");
+app.set("views", "./views");
 
 //global middleware
-app.use(express.static('public'));
+app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(userRoutes);
 
 //route handler
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
-//server setup
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
 
 
+//connect
+mongoose
+  .connect(uri)
+  .then(async () => {
+    console.log("Connected to MongoDB");
+
+    //server setup
+    app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
+    });
+  })
+  .catch((err) => {
+    console.log(`Error connecting to MongoDB: ${err}`);
+  });
