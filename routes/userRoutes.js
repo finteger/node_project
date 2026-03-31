@@ -3,8 +3,11 @@ const router = express.Router();
 
 //home page
 router.get('/home', (req, res) =>{
-    res.render('home');
+    let user = "Todd";
+
+    res.render('home', {user});
 });
+
 
 //example of a route parameter
 router.get('/users/:id', (req, res) => {

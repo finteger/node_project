@@ -26,6 +26,15 @@ app.get("/", (req, res) => {
 });
 
 
+//put in browser localhost:8000/json-response
+app.get('/json-response', (req, res) =>{
+  const data = {
+    name: "John Doe",
+  }
+   res.json(data);
+})
+
+
 
 //connect
 mongoose
