@@ -4,8 +4,7 @@ const router = express.Router();
 //home page
 router.get('/home', (req, res) =>{
     let user = "Todd";
-
-    res.render('home', {user});
+    res.render('home', {user}).status(200);
 });
 
 
