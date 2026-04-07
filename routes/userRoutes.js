@@ -4,8 +4,7 @@ const userController = require('../controllers/userController');
 
 //home page
 router.get('/home', (req, res) =>{
-    let user = "Todd";
-    res.render('home', {user}).status(200);
+    res.render('home');
 });
 
 
