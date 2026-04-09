@@ -43,6 +43,5 @@ router.get('/users', async (req, res) =>{
 
 
 
-
 //commonjs syntax to export the router (configured in package.json "type": "commonjs")
 module.exports = router;
